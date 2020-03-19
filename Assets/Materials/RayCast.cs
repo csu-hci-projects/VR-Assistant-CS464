@@ -10,14 +10,13 @@ public class RayCast : MonoBehaviour
 {
     public float distanceToGrab;
     RaycastHit whatIHit;
-    door currentDoor;
+    //door currentDoor;
     public GameObject player;
     public int errorCount = 0;
     public bool startedTimer = false;
     string fileName = "testFile.txt";
     public Stopwatch stopWatch = new Stopwatch();
 
-    // Start is called before the first frame update
     // Start is called before the first frame update
     void Start()
     {
