@@ -91,7 +91,7 @@ public class RayCast : MonoBehaviour
                         if (player.GetComponent<Inventory>().hasGreen == true)
                         {
                             player.GetComponent<Inventory>().hasGreen = false;
-                            player.GetComponent<Inventory>().hasGreen = true;
+                            player.GetComponent<Inventory>().hasGreenDoor = true;
                             Destroy(whatIHit.collider.gameObject);
                         }
                         else
