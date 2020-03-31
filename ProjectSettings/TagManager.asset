@@ -7,6 +7,10 @@ TagManager:
   - Keycard
   - Pole
   - Door
+  - Block2
+  - Block1
+  - Block3
+  - Block4
   layers:
   - Default
   - TransparentFX

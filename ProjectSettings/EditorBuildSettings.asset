@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 0e16df036dcd0b14fbc6512d7217919e
   - enabled: 1
-    path: Assets/Scenes/Practice Room.unity
+    path: Assets/Scenes/DoorOpen.unity
     guid: f111433b87c1dd6408343cf03bc1253e
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/BlockSnapping.unity
+    guid: f3ee9e410931cfe4da1c1b7fa175ae70
   m_configObjects: {}

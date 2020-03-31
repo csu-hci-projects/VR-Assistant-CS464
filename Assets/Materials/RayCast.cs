@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System.IO;
 using System;
 using System.Diagnostics;
-using System.Threading;
+using UnityEngine.SceneManagement;
 
 public class RayCast : MonoBehaviour  
 {
@@ -14,7 +12,7 @@ public class RayCast : MonoBehaviour
     public GameObject player;
     public int errorCount = 0;
     public bool startedTimer = false;
-    string fileName = "testFile.txt";
+    string fileName = "dooropen.txt";
     public Stopwatch stopWatch = new Stopwatch();
 
     // Start is called before the first frame update
@@ -115,7 +113,7 @@ public class RayCast : MonoBehaviour
                         }
                     }
 
-                    if(player.GetComponent<Inventory>().hasRedDoor == true && player.GetComponent<Inventory>().hasGreen == true && player.GetComponent<Inventory>().hasBlueDoor == true)
+                    if(player.GetComponent<Inventory>().hasRedDoor == true && player.GetComponent<Inventory>().hasGreenDoor == true && player.GetComponent<Inventory>().hasBlueDoor == true)
                     {
                         stopWatch.Stop();
                         TimeSpan ts = stopWatch.Elapsed;
@@ -125,6 +123,8 @@ public class RayCast : MonoBehaviour
                         writeFile.WriteLine("This user made " + errorCount + " errors");
                         writeFile.WriteLine("This user took " + elapsedTime + " to complete the task");
                         writeFile.Close();
+
+                        SceneManager.LoadScene(0);
                     }
                 }
             }
