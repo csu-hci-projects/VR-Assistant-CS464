@@ -45,10 +45,16 @@ public class RayCast : MonoBehaviour
 
             string objName = whatIHit.collider.gameObject.name;
             currentGameObject = GameObject.Find(objName);
-
-
-            if (whatIHit.collider.tag == "Keycard" || (whatIHit.collider.tag == "Door"))
+            string objectTag = whatIHit.collider.tag;
+           
+            if (objectTag == "Keycard" 
+                || objectTag == "Door"
+                || objectTag == "Block1"
+                || objectTag == "Block3"
+                || objectTag == "Block5"
+                || objectTag == "Block7")
             { 
+                
                 if (lastHighlightedObject != currentGameObject)
                 {
                     ClearHighlighted();
@@ -56,6 +62,10 @@ public class RayCast : MonoBehaviour
                     currentGameObject.GetComponent<Renderer>().material.color = color;
                     lastHighlightedObject = currentGameObject;
                 }
+            }
+            else
+            {
+                ClearHighlighted();
             }
 
             if (Input.GetKeyDown(KeyCode.E))
@@ -148,10 +158,6 @@ public class RayCast : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            ClearHighlighted();
-        }
     }
 
     void ClearHighlighted()
@@ -161,6 +167,6 @@ public class RayCast : MonoBehaviour
             lastHighlightedObject.GetComponent<Renderer>().material.color = originalColor;
             lastHighlightedObject = null;
         }
-    }
 
+    }
 }

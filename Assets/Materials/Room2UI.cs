@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PracticeUI : MonoBehaviour
+public class Room2UI : MonoBehaviour
 {
     public GameObject player;
     public Text currentText = null;

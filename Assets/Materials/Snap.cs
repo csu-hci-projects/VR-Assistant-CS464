@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class Snap : MonoBehaviour
 {
-
     public string partnerTag;
     public string selfTag;
     public float closeVPDist = 0.05f;
@@ -22,7 +21,7 @@ public class Snap : MonoBehaviour
     private Vector3 screenPoint;
     private Vector3 offset;
     private bool isSnaped;
-    Color color = new Color(255, 255, 0); //yellow color for when objects are snapped
+    Color color = new Color(1, 255, 1); //yellow color for when objects are snapped
 
     float dist = Mathf.Infinity;
     Color normalColor;
@@ -50,8 +49,6 @@ public class Snap : MonoBehaviour
             stopWatch.Start();
             startedTimer = true;
         }
-
-
     }
     void OnMouseDrag()
     {
@@ -83,38 +80,57 @@ public class Snap : MonoBehaviour
 
     void OnMouseUp()
     {
-
         Cursor.visible = true;
         if (dist < closeVPDist)
         {
-
-            transform.SetParent(partnerGO.transform);
-            StartCoroutine(InstallPart());
+            
             isSnaped = true;
             if(partnerTag == "Block2")
             {
                 selfBlock = GameObject.FindGameObjectWithTag("Block2");
-                selfBlock.GetComponent<MeshRenderer>().material.color = color;
                 player.GetComponent<BlockManager>().redBlockSnapped = true;
+                snapBlock();
             }
             else if (partnerTag == "Block4")
             {
-                selfBlock = GameObject.FindGameObjectWithTag("Block4");
-                selfBlock.GetComponent<MeshRenderer>().material.color = color;
-                player.GetComponent<BlockManager>().blueBlockSnapped = true;
+                if (player.GetComponent<BlockManager>().redBlockSnapped)
+                {
+                    selfBlock = GameObject.FindGameObjectWithTag("Block4");
+                    player.GetComponent<BlockManager>().blueBlockSnapped = true;
+                    snapBlock();
+                }
+                else
+                {
+
+                    //report failure
+                }
             
             }
             else if (partnerTag == "Block6")
             {
-                selfBlock = GameObject.FindGameObjectWithTag("Block6");
-                selfBlock.GetComponent<MeshRenderer>().material.color = color;
-                player.GetComponent<BlockManager>().greenBlockSnapped = true;
+                if (player.GetComponent<BlockManager>().blueBlockSnapped)
+                {
+                    selfBlock = GameObject.FindGameObjectWithTag("Block6");
+                    player.GetComponent<BlockManager>().greenBlockSnapped = true;
+                    snapBlock();
+                }
+                else
+                {
+                    //report failure
+                }
             }
             else if (partnerTag == "Block8")
             {
-                selfBlock = GameObject.FindGameObjectWithTag("Block8");
-                selfBlock.GetComponent<MeshRenderer>().material.color = color;
-                player.GetComponent<BlockManager>().pinkBlockSnapped = true;
+                if (player.GetComponent<BlockManager>().greenBlockSnapped)
+                {
+                    selfBlock = GameObject.FindGameObjectWithTag("Block8");
+                    player.GetComponent<BlockManager>().pinkBlockSnapped = true;
+                    snapBlock();
+                }
+                else
+                {
+                    //report failure
+                }
             }
 
         }
@@ -123,6 +139,13 @@ public class Snap : MonoBehaviour
             //  transform.SetParent(null);
         }
     }
+
+    void snapBlock()
+    {
+        transform.SetParent(partnerGO.transform);
+        StartCoroutine(InstallPart());
+    }
+
     IEnumerator InstallPart()
     {
         while (transform.localPosition != Vector3.right || transform.localRotation != Quaternion.identity)
