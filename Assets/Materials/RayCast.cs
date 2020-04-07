@@ -124,7 +124,7 @@ public class RayCast : MonoBehaviour
                         writeFile.WriteLine("This user took " + elapsedTime + " to complete the task");
                         writeFile.Close();
 
-                        SceneManager.LoadScene(0);
+                        SceneManager.LoadScene(4);
                     }
                 }
             }

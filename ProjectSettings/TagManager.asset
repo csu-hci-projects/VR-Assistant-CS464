@@ -11,6 +11,10 @@ TagManager:
   - Block1
   - Block3
   - Block4
+  - Block5
+  - Block6
+  - Block7
+  - Block8
   layers:
   - Default
   - TransparentFX

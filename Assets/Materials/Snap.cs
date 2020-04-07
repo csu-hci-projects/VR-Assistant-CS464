@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.IO;
+using System;
 using System.Collections;
 using System.Diagnostics;
 using UnityEngine.SceneManagement;
@@ -36,6 +38,7 @@ public class Snap : MonoBehaviour
         player.GetComponent<BlockManager>().redBlockSnapped = false;
         player.GetComponent<BlockManager>().blueBlockSnapped = false;
         player.GetComponent<BlockManager>().greenBlockSnapped = false;
+        player.GetComponent<BlockManager>().pinkBlockSnapped = false;
     }
     void OnMouseDown()
     {
@@ -65,7 +68,16 @@ public class Snap : MonoBehaviour
     {
         if (player.GetComponent<BlockManager>().redBlockSnapped == true && player.GetComponent<BlockManager>().blueBlockSnapped == true && player.GetComponent<BlockManager>().greenBlockSnapped == true && player.GetComponent<BlockManager>().pinkBlockSnapped == true)
         {
-            SceneManager.LoadScene(0);
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+
+            var writeFile = File.CreateText(fileName);
+            writeFile.WriteLine("This user took " + elapsedTime + " to complete the task");
+            writeFile.Close();
+
+            
+            SceneManager.LoadScene(4);
         }
     }
 
@@ -75,37 +87,34 @@ public class Snap : MonoBehaviour
         Cursor.visible = true;
         if (dist < closeVPDist)
         {
+
             transform.SetParent(partnerGO.transform);
             StartCoroutine(InstallPart());
             isSnaped = true;
-            if(partnerTag == "Block1")
-            {
-                selfBlock = GameObject.FindGameObjectWithTag("Block1");
-                selfBlock.GetComponent<MeshRenderer>().material.color = color;
-                player.GetComponent<BlockManager>().redBlockSnapped = true;
-                player.GetComponent<BlockManager>().blueBlockSnapped = true;
-            }
-            else if (partnerTag == "Block2")
+            if(partnerTag == "Block2")
             {
                 selfBlock = GameObject.FindGameObjectWithTag("Block2");
                 selfBlock.GetComponent<MeshRenderer>().material.color = color;
-                player.GetComponent<BlockManager>().blueBlockSnapped = true;
-                if(player.GetComponent<BlockManager>().redBlockSnapped == true)
-                {
-                    player.GetComponent<BlockManager>().greenBlockSnapped = true;
-                }
+                player.GetComponent<BlockManager>().redBlockSnapped = true;
             }
-            else if (partnerTag == "Block3")
+            else if (partnerTag == "Block4")
             {
-                selfBlock = GameObject.FindGameObjectWithTag("Block3");
+                selfBlock = GameObject.FindGameObjectWithTag("Block4");
+                selfBlock.GetComponent<MeshRenderer>().material.color = color;
+                player.GetComponent<BlockManager>().blueBlockSnapped = true;
+            
+            }
+            else if (partnerTag == "Block6")
+            {
+                selfBlock = GameObject.FindGameObjectWithTag("Block6");
                 selfBlock.GetComponent<MeshRenderer>().material.color = color;
                 player.GetComponent<BlockManager>().greenBlockSnapped = true;
-                if(player.GetComponent<BlockManager>().blueBlockSnapped == true)
-                {
-                    selfBlock = GameObject.FindGameObjectWithTag("Block4");
-                    selfBlock.GetComponent<MeshRenderer>().material.color = color;
-                    player.GetComponent<BlockManager>().pinkBlockSnapped = true;
-                }
+            }
+            else if (partnerTag == "Block8")
+            {
+                selfBlock = GameObject.FindGameObjectWithTag("Block8");
+                selfBlock.GetComponent<MeshRenderer>().material.color = color;
+                player.GetComponent<BlockManager>().pinkBlockSnapped = true;
             }
 
         }
