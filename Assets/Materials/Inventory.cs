@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public bool hasRed, hasBlue, hasGreen;
-    public bool hasRedDoor, hasBlueDoor, hasGreenDoor;
+    public bool hasRed, hasOrange, hasYellow,hasGreen, hasBlue, hasIndigo, hasViolet ;
+    public bool hasRedDoor, hasOrangeDoor, hasYellowDoor, hasGreenDoor, hasBlueDoor, hasIndigoDoor, hasVioletDoor;
 
 }

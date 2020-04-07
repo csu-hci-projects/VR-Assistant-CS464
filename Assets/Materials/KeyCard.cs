@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KeyCard : MonoBehaviour
 {
-    public enum KeyCards {redKey, blueKey, greenKey};
+    public enum KeyCards {redKey, orangeKey, yellowKey,greenKey, blueKey, indigoKey , violetKey};
     public KeyCards currentKey;
 
 }

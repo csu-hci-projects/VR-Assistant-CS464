@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PracticeUI : MonoBehaviour
+public class Room2UI : MonoBehaviour
 {
     public GameObject player;
     public Text currentText = null;
@@ -30,8 +30,27 @@ public class PracticeUI : MonoBehaviour
         }
         else if (player.GetComponent<Inventory>().hasGreen) {
             status =
-            status =
             "Player has green key. Open the red door.";
+        }
+        else if (player.GetComponent<Inventory>().hasYellow)
+        {
+            status =
+            "Player has yellow key. Open the orange door.";
+        }
+        else if (player.GetComponent<Inventory>().hasOrange)
+        {
+            status =
+            "Player has orange key. Open the Violet door.";
+        }
+        else if (player.GetComponent<Inventory>().hasIndigo)
+        {
+            status =
+            "Player has indigo key. Open the yellow door.";
+        }
+        else if (player.GetComponent<Inventory>().hasViolet)
+        {
+            status =
+            "Player has violet key. Open the indigo door.";
         }
         else
         {
