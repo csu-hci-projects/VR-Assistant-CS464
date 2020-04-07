@@ -10,10 +10,17 @@ public class RayCast : MonoBehaviour
     RaycastHit whatIHit;
     //door currentDoor;
     public GameObject player;
+    public GameObject currentGameObject;
     public int errorCount = 0;
     public bool startedTimer = false;
     string fileName = "dooropen.txt";
     public Stopwatch stopWatch = new Stopwatch();
+
+    Material originalMaterial;
+
+    GameObject lastHighlightedObject;
+    Color color = new Color(255, 255, 1); //yellow color for when objects are highlighted
+    Color originalColor;
 
     // Start is called before the first frame update
     void Start()
@@ -35,12 +42,24 @@ public class RayCast : MonoBehaviour
 
         if(Physics.Raycast(this.transform.position, this.transform.forward, out whatIHit, distanceToGrab))
         {
+
+            string objName = whatIHit.collider.gameObject.name;
+            currentGameObject = GameObject.Find(objName);
+
+
+            if (whatIHit.collider.tag == "Keycard" || (whatIHit.collider.tag == "Door"))
+            { 
+                if (lastHighlightedObject != currentGameObject)
+                {
+                    ClearHighlighted();
+                    originalColor = currentGameObject.GetComponent<Renderer>().material.color;
+                    currentGameObject.GetComponent<Renderer>().material.color = color;
+                    lastHighlightedObject = currentGameObject;
+                }
+            }
+
             if (Input.GetKeyDown(KeyCode.E))
             {
-                
-                string objName = whatIHit.collider.gameObject.name;
-                UnityEngine.Debug.Log("I picked up " + whatIHit.collider.gameObject.name);
-
                 if (whatIHit.collider.tag == "Keycard")
                 {
                     if (startedTimer == false)
@@ -129,5 +148,19 @@ public class RayCast : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            ClearHighlighted();
+        }
     }
+
+    void ClearHighlighted()
+    {
+        if (lastHighlightedObject != null)
+        {
+            lastHighlightedObject.GetComponent<Renderer>().material.color = originalColor;
+            lastHighlightedObject = null;
+        }
+    }
+
 }
