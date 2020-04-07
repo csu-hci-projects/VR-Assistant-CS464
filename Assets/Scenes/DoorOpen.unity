@@ -408,8 +408,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceToGrab: 3
   player: {fileID: 0}
+  gameObject: {fileID: 0}
   errorCount: 0
   startedTimer: 0
+  highlightMaterial: {fileID: 2100000, guid: e100ece5e1c44cc4cbe72b03f926d5ec, type: 2}
 --- !u!1 &746862428
 GameObject:
   m_ObjectHideFlags: 0
