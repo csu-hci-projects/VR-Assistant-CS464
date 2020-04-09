@@ -16,8 +16,6 @@ public class RayCast : MonoBehaviour
     string fileName = "dooropen.txt";
     public Stopwatch stopWatch = new Stopwatch();
 
-    Material originalMaterial;
-
     GameObject lastHighlightedObject;
     Color color = new Color(255, 255, 1); //yellow color for when objects are highlighted
     Color originalColor;
