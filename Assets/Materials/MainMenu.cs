@@ -47,13 +47,25 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(8);
     }
 
-    public void startBlock()
+    public void startDoorUI()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(14);
     }
 
-    
+    public void startDoorTablet()
+    {
+        SceneManager.LoadScene(13);
+    }
 
+    public void startBlockUI()
+    {
+        SceneManager.LoadScene(12);
+    }
+
+    public void startBlockTablet()
+    {
+        SceneManager.LoadScene(11);
+    }
 
     public void quitGame()
     {

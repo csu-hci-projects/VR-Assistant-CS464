@@ -192,7 +192,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 311815987}
-        m_MethodName: startBlock
+        m_MethodName: startBlockUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -819,7 +819,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 311815987}
-        m_MethodName: startDoor
+        m_MethodName: startDoorUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -944,7 +944,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 311815987}
-        m_MethodName: startDoor
+        m_MethodName: startDoorTablet
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1069,7 +1069,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 311815987}
-        m_MethodName: startBlock
+        m_MethodName: startBlockTablet
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

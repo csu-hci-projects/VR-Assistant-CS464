@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class BlockManager : MonoBehaviour
 {
-    public bool redBlockSnapped, blueBlockSnapped, greenBlockSnapped, pinkBlockSnapped;
+    public bool redBlockSnapped, blueBlockSnapped, greenBlockSnapped, pinkBlockSnapped, orangeBlockSnapped;
 }

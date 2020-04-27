@@ -5,7 +5,7 @@ using System.Collections;
 using System.Diagnostics;
 using UnityEngine.SceneManagement;
 
-public class Snap : MonoBehaviour
+public class BlockUISnap : MonoBehaviour
 {
     public string partnerTag;
     public string selfTag;
@@ -15,7 +15,7 @@ public class Snap : MonoBehaviour
     public float rotateSpeed = 90.0f;
 
     public bool startedTimer = false;
-    string fileName = "blocksnappingTablet.txt";
+    string fileName = "BlockSnapUI.txt";
     public Stopwatch stopWatch = new Stopwatch();
 
     private Vector3 screenPoint;
@@ -65,7 +65,7 @@ public class Snap : MonoBehaviour
     }
     void Update()
     {
-        if (player.GetComponent<BlockManager>().redBlockSnapped == true && player.GetComponent<BlockManager>().blueBlockSnapped == true && player.GetComponent<BlockManager>().greenBlockSnapped == true 
+        if (player.GetComponent<BlockManager>().redBlockSnapped == true && player.GetComponent<BlockManager>().blueBlockSnapped == true && player.GetComponent<BlockManager>().greenBlockSnapped == true
             && player.GetComponent<BlockManager>().pinkBlockSnapped == true && player.GetComponent<BlockManager>().orangeBlockSnapped == true)
         {
             stopWatch.Stop();
@@ -76,6 +76,8 @@ public class Snap : MonoBehaviour
             writeFile.WriteLine("This user took " + elapsedTime + " to complete the task");
             writeFile.WriteLine("This user made  " + failCount + " errors");
             writeFile.Close();
+
+
             SceneManager.LoadScene(10);
         }
     }
@@ -85,17 +87,23 @@ public class Snap : MonoBehaviour
         Cursor.visible = true;
         if (dist < closeVPDist)
         {
-            
             isSnaped = true;
-            if(partnerTag == "Block2")
+            if (partnerTag == "Block2")
             {
-                selfBlock = GameObject.FindGameObjectWithTag("Block2");
-                player.GetComponent<BlockManager>().redBlockSnapped = true;
-                snapBlock();
+                if (player.GetComponent<BlockManager>().blueBlockSnapped)
+                {
+                    selfBlock = GameObject.FindGameObjectWithTag("Block2");
+                    player.GetComponent<BlockManager>().redBlockSnapped = true;
+                    snapBlock();
+                }
+                else
+                {
+                    failCount = failCount + 1;
+                }
             }
             else if (partnerTag == "Block4")
             {
-                if (player.GetComponent<BlockManager>().redBlockSnapped)
+                if (player.GetComponent<BlockManager>().pinkBlockSnapped)
                 {
                     selfBlock = GameObject.FindGameObjectWithTag("Block4");
                     player.GetComponent<BlockManager>().blueBlockSnapped = true;
@@ -109,7 +117,7 @@ public class Snap : MonoBehaviour
             }
             else if (partnerTag == "Block6")
             {
-                if (player.GetComponent<BlockManager>().blueBlockSnapped)
+                if (player.GetComponent<BlockManager>().orangeBlockSnapped)
                 {
                     selfBlock = GameObject.FindGameObjectWithTag("Block6");
                     player.GetComponent<BlockManager>().greenBlockSnapped = true;
@@ -122,20 +130,13 @@ public class Snap : MonoBehaviour
             }
             else if (partnerTag == "Block8")
             {
-                if (player.GetComponent<BlockManager>().greenBlockSnapped)
-                {
-                    selfBlock = GameObject.FindGameObjectWithTag("Block8");
-                    player.GetComponent<BlockManager>().pinkBlockSnapped = true;
-                    snapBlock();
-                }
-                else
-                {
-                    failCount = failCount + 1;
-                }
+                 selfBlock = GameObject.FindGameObjectWithTag("Block8");
+                 player.GetComponent<BlockManager>().pinkBlockSnapped = true;
+                 snapBlock();
             }
             else if (partnerTag == "Block10")
             {
-                if (player.GetComponent<BlockManager>().pinkBlockSnapped)
+                if (player.GetComponent<BlockManager>().redBlockSnapped)
                 {
                     selfBlock = GameObject.FindGameObjectWithTag("Block8");
                     player.GetComponent<BlockManager>().orangeBlockSnapped = true;

@@ -4,7 +4,7 @@ using System;
 using System.Diagnostics;
 using UnityEngine.SceneManagement;
 
-public class RayCastRoom2 : MonoBehaviour
+public class RayCastTabletMain : MonoBehaviour
 {
     public float distanceToGrab;
     RaycastHit whatIHit;
@@ -12,7 +12,7 @@ public class RayCastRoom2 : MonoBehaviour
     public GameObject player;
     public int errorCount = 0;
     public bool startedTimer = false;
-    string fileName = "DoorUI.txt";
+    string fileName = "DoorTablet.txt";
     public Stopwatch stopWatch = new Stopwatch();
 
     public GameObject currentGameObject;
@@ -67,8 +67,10 @@ public class RayCastRoom2 : MonoBehaviour
             {
                 ClearHighlighted();
             }
+
             if (Input.GetKeyDown(KeyCode.E))
             {
+
                 if (whatIHit.collider.tag == "Keycard")
                 {
                     if (startedTimer == false)
@@ -126,9 +128,9 @@ public class RayCastRoom2 : MonoBehaviour
                 {
                     if (objName == "Red door")
                     {
-                        if (player.GetComponent<Inventory>().hasGreen == true)
+                        if (player.GetComponent<Inventory>().hasOrange == true)
                         {
-                            player.GetComponent<Inventory>().hasGreen = false;
+                            player.GetComponent<Inventory>().hasOrange = false;
                             player.GetComponent<Inventory>().hasRedDoor = true;
                             Destroy(whatIHit.collider.gameObject);
                         }
@@ -139,9 +141,9 @@ public class RayCastRoom2 : MonoBehaviour
                     }
                     if (objName == "Orange door")
                     {
-                        if (player.GetComponent<Inventory>().hasYellow == true)
+                        if (player.GetComponent<Inventory>().hasGreen == true)
                         {
-                            player.GetComponent<Inventory>().hasYellow = false;
+                            player.GetComponent<Inventory>().hasGreen = false;
                             player.GetComponent<Inventory>().hasOrangeDoor = true;
                             Destroy(whatIHit.collider.gameObject);
                         }
@@ -152,9 +154,9 @@ public class RayCastRoom2 : MonoBehaviour
                     }
                     if (objName == "Yellow door")
                     {
-                        if (player.GetComponent<Inventory>().hasIndigo == true)
+                        if (player.GetComponent<Inventory>().hasRed == true)
                         {
-                            player.GetComponent<Inventory>().hasIndigo = false;
+                            player.GetComponent<Inventory>().hasRed = false;
                             player.GetComponent<Inventory>().hasYellowDoor = true;
                             Destroy(whatIHit.collider.gameObject);
                         }
@@ -165,9 +167,9 @@ public class RayCastRoom2 : MonoBehaviour
                     }
                     if (objName == "Indigo door")
                     {
-                        if (player.GetComponent<Inventory>().hasViolet == true)
+                        if (player.GetComponent<Inventory>().hasBlue == true)
                         {
-                            player.GetComponent<Inventory>().hasViolet = false;
+                            player.GetComponent<Inventory>().hasBlue = false;
                             player.GetComponent<Inventory>().hasIndigoDoor = true;
                             Destroy(whatIHit.collider.gameObject);
                         }
@@ -178,9 +180,9 @@ public class RayCastRoom2 : MonoBehaviour
                     }
                     if (objName == "Violet door")
                     {
-                        if (player.GetComponent<Inventory>().hasOrange == true)
+                        if (player.GetComponent<Inventory>().hasYellow == true)
                         {
-                            player.GetComponent<Inventory>().hasOrange = false;
+                            player.GetComponent<Inventory>().hasYellow = false;
                             player.GetComponent<Inventory>().hasVioletDoor = true;
                             Destroy(whatIHit.collider.gameObject);
                         }
@@ -191,9 +193,9 @@ public class RayCastRoom2 : MonoBehaviour
                     }
                     if (objName == "Green door")
                     {
-                        if (player.GetComponent<Inventory>().hasBlue == true)
+                        if (player.GetComponent<Inventory>().hasViolet == true)
                         {
-                            player.GetComponent<Inventory>().hasBlue = false;
+                            player.GetComponent<Inventory>().hasViolet = false;
                             player.GetComponent<Inventory>().hasGreenDoor = true;
                             Destroy(whatIHit.collider.gameObject);
                         }
@@ -204,9 +206,9 @@ public class RayCastRoom2 : MonoBehaviour
                     }
                     if (objName == "Blue door")
                     {
-                        if (player.GetComponent<Inventory>().hasRed == true)
+                        if (player.GetComponent<Inventory>().hasIndigo == true)
                         {
-                            player.GetComponent<Inventory>().hasRed = false;
+                            player.GetComponent<Inventory>().hasIndigo = false;
                             player.GetComponent<Inventory>().hasBlueDoor = true;
                             Destroy(whatIHit.collider.gameObject);
                         }
@@ -217,7 +219,7 @@ public class RayCastRoom2 : MonoBehaviour
                     }
 
                     if (player.GetComponent<Inventory>().hasRedDoor == true &&
-                        player.GetComponent<Inventory>().hasGreenDoor == true && 
+                        player.GetComponent<Inventory>().hasGreenDoor == true &&
                         player.GetComponent<Inventory>().hasBlueDoor == true &&
                         player.GetComponent<Inventory>().hasYellowDoor == true &&
                         player.GetComponent<Inventory>().hasOrangeDoor == true &&
