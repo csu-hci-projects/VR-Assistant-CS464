@@ -592,7 +592,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400006, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
 --- !u!1 &470936608 stripped
 GameObject:
@@ -628,6 +629,7 @@ MonoBehaviour:
   blueBlockSnapped: 0
   greenBlockSnapped: 0
   pinkBlockSnapped: 0
+  orangeBlockSnapped: 0
 --- !u!114 &470936612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,6 +670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceToGrab: 3
   player: {fileID: 0}
+  currentGameObject: {fileID: 0}
 --- !u!1 &1313578607
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,8 +745,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313578607}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.5, y: 0, z: -3.5}
+  m_LocalScale: {x: -0.031895954, y: -0.028991, z: -0.012033874}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
