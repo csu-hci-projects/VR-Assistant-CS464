@@ -11,7 +11,6 @@ public class RayCastTabletMain : MonoBehaviour
     //door currentDoor;
     public GameObject player;
     public int errorCount = 0;
-    public bool startedTimer = false;
     string fileName = "DoorTablet.txt";
     public Stopwatch stopWatch = new Stopwatch();
 
@@ -25,6 +24,7 @@ public class RayCastTabletMain : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        stopWatch.Start();
         player.GetComponent<Inventory>().hasRed = false;
         player.GetComponent<Inventory>().hasYellow = false;
         player.GetComponent<Inventory>().hasOrange = false;
@@ -73,11 +73,6 @@ public class RayCastTabletMain : MonoBehaviour
 
                 if (whatIHit.collider.tag == "Keycard")
                 {
-                    if (startedTimer == false)
-                    {
-                        stopWatch.Start();
-                        startedTimer = true;
-                    }
                     if (player.GetComponent<Inventory>().hasBlue || player.GetComponent<Inventory>().hasGreen || player.GetComponent<Inventory>().hasRed)
                     {
                         //do nothing
@@ -230,7 +225,12 @@ public class RayCastTabletMain : MonoBehaviour
                         TimeSpan ts = stopWatch.Elapsed;
                         string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
 
-                        var writeFile = File.CreateText(fileName);
+                        string dataPath = System.Environment.GetFolderPath( (System.Environment.SpecialFolder.Desktop)) + "/logfiles/";
+                        if(!Directory.Exists(dataPath)){
+                            Directory.CreateDirectory(dataPath);
+                         }
+        
+                        var writeFile = File.CreateText(dataPath + fileName);
                         writeFile.WriteLine("This user made " + errorCount + " errors");
                         writeFile.WriteLine("This user took " + elapsedTime + " to complete the task");
                         writeFile.Close();

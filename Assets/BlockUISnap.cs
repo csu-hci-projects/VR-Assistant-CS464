@@ -14,7 +14,6 @@ public class BlockUISnap : MonoBehaviour
     public float moveSpeed = 40.0f;
     public float rotateSpeed = 90.0f;
 
-    public bool startedTimer = false;
     string fileName = "BlockSnapUI.txt";
     public Stopwatch stopWatch = new Stopwatch();
 
@@ -33,6 +32,7 @@ public class BlockUISnap : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        stopWatch.Start();
         normalColor = GetComponent<Renderer>().material.color; //gets the default color of the object
         partnerGO = GameObject.FindGameObjectWithTag(partnerTag); //gets the current selected objects partner tag so it knows what to snap to
         player.GetComponent<BlockManager>().redBlockSnapped = false;
@@ -46,11 +46,6 @@ public class BlockUISnap : MonoBehaviour
         screenPoint = Camera.main.WorldToScreenPoint(transform.position);
         offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
         Cursor.visible = false;
-        if (startedTimer == false)
-        {
-            stopWatch.Start();
-            startedTimer = true;
-        }
     }
     void OnMouseDrag()
     {
@@ -72,7 +67,12 @@ public class BlockUISnap : MonoBehaviour
             TimeSpan ts = stopWatch.Elapsed;
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
 
-            var writeFile = File.CreateText(fileName);
+            string dataPath = System.Environment.GetFolderPath( (System.Environment.SpecialFolder.Desktop)) + "/logfiles/";
+            if(!Directory.Exists(dataPath)){
+                Directory.CreateDirectory(dataPath);
+            }
+        
+            var writeFile = File.CreateText(dataPath + fileName);
             writeFile.WriteLine("This user took " + elapsedTime + " to complete the task");
             writeFile.WriteLine("This user made  " + failCount + " errors");
             writeFile.Close();
@@ -98,7 +98,7 @@ public class BlockUISnap : MonoBehaviour
                 }
                 else
                 {
-                    failCount = failCount + 1;
+                    failCount += 1;
                 }
             }
             else if (partnerTag == "Block4")
@@ -111,7 +111,7 @@ public class BlockUISnap : MonoBehaviour
                 }
                 else
                 {
-                    failCount = failCount + 1;
+                    failCount += 1;
                 }
 
             }
@@ -125,7 +125,7 @@ public class BlockUISnap : MonoBehaviour
                 }
                 else
                 {
-                    failCount = failCount + 1;
+                    failCount += 1;
                 }
             }
             else if (partnerTag == "Block8")
@@ -144,7 +144,7 @@ public class BlockUISnap : MonoBehaviour
                 }
                 else
                 {
-                    failCount = failCount + 1;
+                    failCount += 1;
                 }
             }
 

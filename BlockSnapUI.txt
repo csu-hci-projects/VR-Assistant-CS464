@@ -1,2 +1,2 @@
-This user took 00:00:00.00 to complete the task
+This user took 00:00:22.85 to complete the task
 This user made  0 errors
