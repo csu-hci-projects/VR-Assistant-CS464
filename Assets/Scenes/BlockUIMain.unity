@@ -1064,8 +1064,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753348007}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -10.136, y: 0, z: -10.136}
+  m_LocalScale: {x: 1.4054, y: 1.4054, z: 1.4054}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1245,7 +1245,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400006, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
 --- !u!4 &1047801792 stripped
 Transform:
@@ -1673,11 +1674,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1602792013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 016d3290e89cd614f854302b5848dd87, type: 3}
+  m_Script: {fileID: 11500000, guid: d04ec33bc75da304ba945ba4e12bcf52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToGrab: 3
   player: {fileID: 12255259}
+  currentGameObject: {fileID: 0}
   errorCount: 0
   startedTimer: 0
 --- !u!1 &1699176600
