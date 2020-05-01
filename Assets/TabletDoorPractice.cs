@@ -60,8 +60,6 @@ public class TabletDoorPractice : MonoBehaviour
 
                 if (whatIHit.collider.tag == "Keycard")
                 {
-
-
                     if (objName == "Red Key")
                     {
                         player.GetComponent<Inventory>().hasRed = true;
